@@ -1,0 +1,10 @@
+{
+  "api": { 
+    "invokeUrl": " https://nerngh99k4.execute-api.us-west-2.amazonaws.com/normas"
+  },
+  "cognito": {
+    "REGION": "us-west-2",
+    "USER_POOL_ID": "us-west-2_bkNu1WPbD",
+    "APP_CLIENT_ID": "qfjv56hig5f9jl1eq60fvk5u2"
+  }
+} 
