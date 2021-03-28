@@ -1,6 +1,6 @@
 {
   "api": { 
-    "invokeUrl": " https://nerngh99k4.execute-api.us-west-2.amazonaws.com/normas"
+    "invokeUrl": "https://nerngh99k4.execute-api.us-west-2.amazonaws.com/normas"
   },
   "cognito": {
     "REGION": "us-west-2",

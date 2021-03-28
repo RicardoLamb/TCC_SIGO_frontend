@@ -29,8 +29,8 @@ export default class Navbar extends Component {
             <a href="/" className="navbar-item">
               Home
             </a>
-            <a href="/products" className="navbar-item">
-              Products
+            <a href="/normas" className="navbar-item">
+              Normas
             </a>
             <a href="/admin" className="navbar-item">
               Admin
