@@ -5,8 +5,8 @@ class ChangePasswordConfirmation extends Component {
     return (
       <section className="section auth">
         <div className="container">
-          <h1>Change Password</h1>
-          <p>Your password has been successfully updated!</p>
+          <h1>Alterar Senha</h1>
+          <p>Sua senha foi alterado com sucesso!</p>
         </div>
       </section>
     );

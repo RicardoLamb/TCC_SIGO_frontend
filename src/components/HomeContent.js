@@ -8,9 +8,9 @@ export default function HomeContent() {
                 <div className="card is-shady">
                     <div className="card-content">
                         <div className="content">
-                            <h4>Energy conservation</h4>
-                            <p>Purus semper eget duis at tellus at urna condimentum mattis. Non blandit massa enim nec. Integer enim neque volutpat ac tincidunt vitae semper quis. Accumsan tortor posuere ac ut consequat semper viverra nam.</p>
-                            <p><a href="/">Learn more</a></p>
+                            <h4>Consultorias e Assessorias</h4>
+                            <p>As melhores Consultorias atuantes no mercado. Garantia de conformidade com as normas Técnicas vigente no Brasil. Encontre aqui a Consultoria que melhor se enquadra na sua necessidade e tenha conformidade em seu processo operacional.</p>
+                            <p><a href="/">Saiba mais</a></p>
                         </div>
                     </div>
                 </div>
@@ -19,10 +19,9 @@ export default function HomeContent() {
                 <div className="card is-shady">
                     <div className="card-content">
                         <div className="content">
-                            <h4>Water conservation</h4>
-                            <p>Ut venenatis tellus in metus vulputate. Amet consectetur adipiscing elit pellentesque. Sed arcu non odio euismod lacinia at quis risus. Faucibus turpis in eu mi bibendum neque egestas cmonsu songue. Phasellus vestibulum lorem
-                            sed risus.</p>
-                            <p><a href="/">Learn more</a></p>
+                            <h4>Gestão de Normas</h4>
+                            <p>Em conformidade com planejamento de ações que envolvam o uso correto e eficiente de recursos, descarte de sub-produtos do processo industrial no meio-ambiente, monitoramento de riscos de acidentes e suas consequências, etc.</p>
+                            <p><a href="/">Saiba mais</a></p>
                         </div>
                     </div>
                 </div>
@@ -31,9 +30,9 @@ export default function HomeContent() {
                 <div className="card is-shady">
                      <div className="card-content">
                         <div className="content">
-                            <h4>Solar energy</h4>
-                            <p>Imperdiet dui accumsan sit amet nulla facilisi morbi. Fusce ut placerat orci nulla pellentesque dignissim enim. Libero id faucibus nisl tincidunt eget nullam. Commodo viverra maecenas accumsan lacus vel facilisis.</p>
-                            <p><a href="/">Learn more</a></p>
+                            <h4>Gestão do Processo Industrial</h4>
+                            <p>Processamento em nuvem, tecnologia de ponta livre e gratuita, gerando componentes reutilizáveis. Permite integrações através de troca de mensagens com os demais módulos e integração completa com soluções ERP de mercado.</p>
+                            <p><a href="/">Saiba mais</a></p>
                         </div>
                     </div>
                 </div>

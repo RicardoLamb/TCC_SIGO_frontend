@@ -59,10 +59,10 @@ class ForgotPasswordVerification extends Component {
     return (
       <section className="section auth">
         <div className="container">
-          <h1>Set new password</h1>
+          <h1>Definir nova senha</h1>
           <p>
-            Please enter the verification code sent to your email address below,
-            your email address and a new password.
+            Digite nos campos abaixo o código de verificação enviado ao 
+            seu endereço de e-mail, seu endereço de e-mail e a nova senha.
           </p>
           <FormErrors formerrors={this.state.errors} />
 
@@ -74,7 +74,7 @@ class ForgotPasswordVerification extends Component {
                   className="input"
                   id="verificationcode"
                   aria-describedby="verificationCodeHelp"
-                  placeholder="Enter verification code"
+                  placeholder="Código de Verificação"
                   value={this.state.verificationcode}
                   onChange={this.onInputChange}
                 />
@@ -87,7 +87,7 @@ class ForgotPasswordVerification extends Component {
                   type="email"
                   id="email"
                   aria-describedby="emailHelp"
-                  placeholder="Enter email"
+                  placeholder="E-mail"
                   value={this.state.email}
                   onChange={this.onInputChange}
                 />
@@ -102,7 +102,7 @@ class ForgotPasswordVerification extends Component {
                   type="password"
                   className="input"
                   id="newpassword"
-                  placeholder="New password"
+                  placeholder="Nova Senha"
                   value={this.state.newpassword}
                   onChange={this.onInputChange}
                 />
@@ -114,7 +114,7 @@ class ForgotPasswordVerification extends Component {
             <div className="field">
               <p className="control">
                 <button className="button is-success">
-                  Submmit
+                  Enviar
                 </button>
               </p>
             </div>

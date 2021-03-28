@@ -65,7 +65,7 @@ class LogIn extends Component {
     return (
       <section className="section auth">
         <div className="container">
-          <h1>Log in</h1>
+          <h1>Acessar</h1>
           <FormErrors formerrors={this.state.errors} />
 
           <form onSubmit={this.handleSubmit}>
@@ -76,7 +76,7 @@ class LogIn extends Component {
                   type="text"
                   id="username"
                   aria-describedby="usernameHelp"
-                  placeholder="Enter username or email"
+                  placeholder="Nome de usuário ou e-mail"
                   value={this.state.username}
                   onChange={this.onInputChange}
                 />
@@ -88,7 +88,7 @@ class LogIn extends Component {
                   className="input" 
                   type="password"
                   id="password"
-                  placeholder="Password"
+                  placeholder="Senha"
                   value={this.state.password}
                   onChange={this.onInputChange}
                 />
@@ -99,13 +99,13 @@ class LogIn extends Component {
             </div>
             <div className="field">
               <p className="control">
-                <a href="/forgotpassword">Forgot password?</a>
+                <a href="/forgotpassword">Esqueceu a senha?</a>
               </p>
             </div>
             <div className="field">
               <p className="control">
                 <button className="button is-success">
-                  Login
+                  Acessar
                 </button>
               </p>
             </div>

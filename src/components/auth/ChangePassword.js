@@ -63,7 +63,7 @@ class ChangePassword extends Component {
     return (
       <section className="section auth">
         <div className="container">
-          <h1>Change Password</h1>
+          <h1>Alterar senha</h1>
           <FormErrors formerrors={this.state.errors} />
 
           <form onSubmit={this.handleSubmit}>
@@ -73,7 +73,7 @@ class ChangePassword extends Component {
                   className="input" 
                   type="password"
                   id="oldpassword"
-                  placeholder="Old password"
+                  placeholder="Senha Atual"
                   value={this.state.oldpassword}
                   onChange={this.onInputChange}
                 />
@@ -88,7 +88,7 @@ class ChangePassword extends Component {
                   className="input"
                   type="password"
                   id="newpassword"
-                  placeholder="New password"
+                  placeholder="Nova Senha"
                   value={this.state.newpassword}
                   onChange={this.onInputChange}
                 />
@@ -103,7 +103,7 @@ class ChangePassword extends Component {
                   className="input"
                   type="password"
                   id="confirmpassword"
-                  placeholder="Confirm password"
+                  placeholder="Confirmar Senha"
                   value={this.state.confirmpassword}
                   onChange={this.onInputChange}
                 />
@@ -114,13 +114,13 @@ class ChangePassword extends Component {
             </div>
             <div className="field">
               <p className="control">
-                <a href="/forgotpassword">Forgot password?</a>
+                <a href="/forgotpassword">Esqueceu a senha?</a>
               </p>
             </div>
             <div className="field">
               <p className="control">
                 <button className="button is-success">
-                  Change password
+                  Alterar Senha
                 </button>
               </p>
             </div>
