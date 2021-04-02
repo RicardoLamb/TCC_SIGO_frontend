@@ -31,8 +31,8 @@ export default class Normas extends Component {
       <Fragment>
         <section className="section">
           <div className="container">
-            <h1>Energy Normas</h1>
-            <p className="subtitle is-5">Invest in a clean future with our efficient and cost-effective green energy normas:</p>
+            <h1>Gestão de Normas</h1>
+            <p className="subtitle is-5">Tenha uma eficiente gestão de normas através de nossa plataforma:</p>
             <br />
             <div className="columns">
               <div className="column">
@@ -41,7 +41,7 @@ export default class Normas extends Component {
                     { 
                       this.state.normas && this.state.normas.length > 0
                       ? this.state.normas.map(norma => <Norma name={norma.acoes} id={norma.id} key={norma.id} />)
-                      : <div className="tile notification is-warning">No normas available</div>
+                      : <div className="tile notification is-warning">Não foram encontradas normas disponíveis</div>
                     }
                   </div>
                 </div>
