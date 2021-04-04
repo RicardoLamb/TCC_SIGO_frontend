@@ -5,7 +5,7 @@ export default class normaAdmin extends Component {
 
   state = {
     isEditMode: false,
-    updatednormaname: this.props.name
+    updatednormaacoes: this.props.acoes
   }
 
   handleNormaEdit = event => {
@@ -16,10 +16,10 @@ export default class normaAdmin extends Component {
   handleEditSave = event => {
     event.preventDefault();
     this.setState({ isEditMode: false });
-    this.props.handleUpdateNorma(this.props.id, this.state.updatednormaname);
+    this.props.handleUpdateNorma(this.props.id, this.state.updatednormaacoes);
   }
 
-  onAddNormaNameChange = event => this.setState({ "updatednormaname": event.target.value });
+  onAddNormaAcoesChange = event => this.setState({ "updatednormaacoes": event.target.value });
 
   render() {
     return (
@@ -36,22 +36,21 @@ export default class normaAdmin extends Component {
         {
           this.state.isEditMode 
           ? <div>
-              <p>Edit norma name</p>
+              <p className="norma-id">id: { this.props.id }</p>
               <input 
                 className="input is-medium"
                 type="text" 
-                placeholder="Enter name"
-                value={this.state.updatednormaname}
-                onChange={this.onAddNormaNameChange}
+                placeholder={ this.props.acoes }
+                value={this.state.updatednormaacoes}
+                onChange={this.onAddNormaAcoesChange}
               />
-              <p className="norma-id">id: { this.props.id }</p>
               <button type="submit" 
                 className="button is-info is-small"
                 onClick={ this.handleEditSave }
               >save</button>
             </div>
           : <div>
-              <p className="norma-title">{ this.props.name }</p>
+              <p className="norma-title">{ this.props.acoes }</p>
               <p className="norma-id">id: { this.props.id }</p>
             </div>
         }
