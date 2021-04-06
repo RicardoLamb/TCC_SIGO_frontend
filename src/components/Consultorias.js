@@ -3,30 +3,25 @@ import axios from "axios";
 import nextId from "react-id-generator";
 
 const config = require('../config.json');
-const formState = { "id": "", "acoes": "", "area": "", "codigo": "", "consequencias": "", "descarte": "", "descricao": "", "fonte": "", "normasobjects": "", "objects": "", "riscos": "", "sigla": "", "situation": "", "titulo": "", "usocorreto": "", "vigencia": "", "method": "post" };
+const formState = { "id": "", "area": "", "cnpj": "", "empresa": "", "endereco": "", "fantasia": "", "iniciodecontrato": "", "modalidade": "", "objects": "", "normas": "", "vigenciadecontrato": ""};
 
 export default class Consultorias extends Component {
 
   state = {
-    newnorma: {
+    newconsultoria: {
       "id": "",
-      "acoes": "",
       "area": "",
-      "codigo": "",
-      "consequencias": "",
-      "descarte": "",
-      "descricao": "",
-      "fonte": "",
-      "normasobjects": "",
+      "cnpj": "",
+      "empresa": "",
+      "endereco": "",
+      "fantasia": "",
+      "iniciodecontrato": "",
+      "modalidade": "",
       "objects": "",
-      "riscos": "",
-      "sigla": "",
-      "situation": "",
-      "titulo": "",
-      "usocorreto": "",
-      "vigencia": ""
+      "normas": "",
+      "vigenciadecontrato": ""
     },
-    normas: []
+    consultorias: []
   }
 
   addContact = async (e) => {
@@ -34,25 +29,20 @@ export default class Consultorias extends Component {
     try {
       const data = {
         id: formState.id,
-        acoes: formState.acoes,
         area: formState.area,
-        codigo: formState.codigo,
-        consequencias: formState.consequencias,
-        descarte: formState.descarte,
-        descricao: formState.descricao,
-        fonte: formState.fonte,
-        normasobjects: formState.normasobjects,
+        cnpj: formState.cnpj,
+        empresa: formState.empresa,
+        endereco: formState.endereco,
+        fantasia: formState.fantasia,
+        iniciodecontrato: formState.iniciodecontrato,
+        modalidade: formState.modalidade,
         objects: formState.objects,
-        riscos: formState.riscos,
-        sigla: formState.sigla,
-        situation: formState.situation,
-        titulo: formState.titulo,
-        usocorreto: formState.usocorreto,
-        vigencia: formState.vigencia
+        normas: formState.normas,
+        vigenciadecontrato: formState.vigenciadecontrato
       }
-      await axios.post(`${config.api.invokeUrl}/normas/${formState.id}`, data);
+      await axios.post(`${config.apiConsultorias.invokeUrl}/consultorias/${formState.id}`, data);
     }catch (err) {
-      console.log(`Error updating norma: ${err}`);
+      console.log(`Error updating consultoria: ${err}`);
     }
   }
 
@@ -60,94 +50,84 @@ updateFormState(key, value) {
   formState[key] = value;
 }
 
-handleAddNorma = async (id, event) => {
+handleAddConsultoria = async (id, event) => {
   event.preventDefault();
   try {
     id = (id === "" ? nextId("NID-") : id);
     const params = {
       "id": id,
-      "acoes": this.state.newnorma.acoes,
-      "area": this.state.newnorma.area,
-      "codigo": this.state.newnorma.codigo,
-      "consequencias": this.state.newnorma.consequencias,
-      "descarte": this.state.newnorma.descarte,
-      "descricao": this.state.newnorma.descricao,
-      "fonte": this.state.newnorma.fonte,
-      "normasobjects": this.state.newnorma.normasobjects,
-      "objects": this.state.newnorma.objects,
-      "riscos": this.state.newnorma.riscos,
-      "sigla": this.state.newnorma.sigla,
-      "situation": this.state.newnorma.situation,
-      "titulo": this.state.newnorma.titulo,
-      "usocorreto": this.state.newnorma.usocorreto,
-      "vigencia": this.state.newnorma.vigencia        
+      "area": this.state.newconsultoria.area,
+      "cnpj": this.state.newconsultoria.cnpj,
+      "empresa": this.state.newconsultoria.empresa,
+      "endereco": this.state.newconsultoria.endereco,
+      "fantasia": this.state.newconsultoria.fantasia,
+      "iniciodecontrato": this.state.newconsultoria.iniciodecontrato,
+      "modalidade": this.state.newconsultoria.modalidade,
+      "objects": this.state.newconsultoria.objects,
+      "normas": this.state.newconsultoria.normas,
+      "vigenciadecontrato": this.state.newconsultoria.vigenciadecontrato     
     };
-    await axios.post(`${config.api.invokeUrl}/normas/${id}`, params);
+    await axios.post(`${config.apiConsultorias.invokeUrl}/consultorias/${id}`, params);
     this.componentDidMount();
-    this.setState({ newnorma: { "id": "", "acoes": "", "area": "", "codigo": "", "consequencias": "", "descarte": "", "descricao": "", "fonte": "", "normasobjects": "", "objects": "", "riscos": "", "sigla": "", "situation": "", "titulo": "", "usocorreto": "", "vigencia": "" }});
+    this.setState({ newconsultoria: { "id": "", "area": "", "cnpj": "", "empresa": "", "endereco": "", "fantasia": "", "iniciodecontrato": "", "modalidade": "", "objects": "", "normas": "", "vigenciadecontrato": ""}});
   }catch (err) {
     console.log(`An error has occurred: ${err}`);
   }
 }
 
-  handleClearNorma = async () => {
+  handleClearConsultoria = async () => {
     try {
-      this.setState({ newnorma: { "id": "", "acoes": "", "area": "", "codigo": "", "consequencias": "", "descarte": "", "descricao": "", "fonte": "", "normasobjects": "", "objects": "", "riscos": "", "sigla": "", "situation": "", "titulo": "", "usocorreto": "", "vigencia": "" }});
+      this.setState({ newconsultoria: { "id": "", "area": "", "cnpj": "", "empresa": "", "endereco": "", "fantasia": "", "iniciodecontrato": "", "modalidade": "", "objects": "", "normas": "", "vigenciadecontrato": "" }});
     }catch (err) {
-      console.log(`Error updating norma: ${err}`);
+      console.log(`Error updating consultoria: ${err}`);
     }
   }
 
-  handleUpdateNorma = async (id) => {
+  handleUpdateConsultoria = async (id) => {
     try {
-      const normaToUpdate = [...this.state.normas].find(norma => norma.id === id);
-      this.setState({ newnorma: normaToUpdate});
+      const consultoriaToUpdate = [...this.state.consultorias].find(consultoria => consultoria.id === id);
+      this.setState({ newconsultoria: consultoriaToUpdate});
     }catch (err) {
-      console.log(`Error updating norma: ${err}`);
+      console.log(`Error updating consultoria: ${err}`);
     }
   }
 
-  handleDeleteNorma = async (id, event) => {
+  handleDeleteConsultoria = async (id, event) => {
     event.preventDefault();
     try {
-      await axios.delete(`${config.api.invokeUrl}/normas/${id}`)
-      const deletednormas = [...this.state.normas].filter(norma => norma.id !== id);
-      this.setState({normas: deletednormas});
-      this.handleClearNorma();
+      await axios.delete(`${config.apiConsultorias.invokeUrl}/consultorias/${id}`)
+      const deletedconsultorias = [...this.state.consultorias].filter(consultoria => consultoria.id !== id);
+      this.setState({consultorias: deletedconsultorias});
+      this.handleClearConsultoria();
     }catch (err) {
-      console.log(`Unable to delete norma: ${err}`);
+      console.log(`Unable to delete consultoria: ${err}`);
     }
   }
 
-  fetchnormas =   async () => {
+  fetchConsultorias =   async () => {
     try {
-      const res = await axios.get(`${config.api.invokeUrl}/normas`);
-      const normas = res.data;
-      this.setState({ normas: normas });
+      const res = await axios.get(`${config.apiConsultorias.invokeUrl}/consultorias`);
+      const consultorias = res.data;
+      this.setState({ consultorias: consultorias });
     } catch (err) {
       console.log(`An error has occurred: ${err}`);
     }
   }
 
-  onAddNormaIdChange = event => this.setState({ newnorma: { ...this.state.newnorma, "id": event.target.value } });
-  onAddNormaAcoesChange = event => this.setState({ newnorma: { ...this.state.newnorma, "acoes": event.target.value } });
-  onAddNormaAreaChange = event => this.setState({ newnorma: { ...this.state.newnorma, "area": event.target.value } });
-  onAddNormasCodigoChange = event => this.setState({ newnorma: { ...this.state.newnorma, "codigo": event.target.value } });
-  onAddNormaConsequenciasChange = event => this.setState({ newnorma: { ...this.state.newnorma, "consequencias": event.target.value } });
-  onAddNormaDescarteChange = event => this.setState({ newnorma: { ...this.state.newnorma, "descarte": event.target.value } });
-  onAddNormaDescricaoChange = event => this.setState({ newnorma: { ...this.state.newnorma, "descricao": event.target.value } });
-  onAddNormaFonteChange = event => this.setState({ newnorma: { ...this.state.newnorma, "fonte": event.target.value } });
-  onAddNormaObjectsNormasChange = event => this.setState({ newnorma: { ...this.state.newnorma, "normasobjects": event.target.value } });
-  onAddNormaObjectsChange = event => this.setState({ newnorma: { ...this.state.newnorma, "objects": event.target.value } });
-  onAddNormaRiscosChange = event => this.setState({ newnorma: { ...this.state.newnorma, "riscos": event.target.value } });
-  onAddNormaSiglaChange = event => this.setState({ newnorma: { ...this.state.newnorma, "sigla": event.target.value } });
-  onAddNormaSituationChange = event => this.setState({ newnorma: { ...this.state.newnorma, "situation": event.target.value } });
-  onAddNormaTituloChange = event => this.setState({ newnorma: { ...this.state.newnorma, "titulo": event.target.value } });
-  onAddNormaUsoCorretoChange = event => this.setState({ newnorma: { ...this.state.newnorma, "usocorreto": event.target.value } });
-  onAddNormaVigenciaChange = event => this.setState({ newnorma: { ...this.state.newnorma, "vigencia": event.target.value } });
+  onAddConsultoriaIdChange = event => this.setState({ newconsultoria: { ...this.state.newconsultoria, "id": event.target.value } });
+  onAddConsultoriaAreaChange = event => this.setState({ newconsultoria: { ...this.state.newconsultoria, "area": event.target.value } });
+  onAddconsultoriasCNPJChange = event => this.setState({ newconsultoria: { ...this.state.newconsultoria, "cnpj": event.target.value } });
+  onAddConsultoriaEmpresaChange = event => this.setState({ newconsultoria: { ...this.state.newconsultoria, "empresa": event.target.value } });
+  onAddConsultoriaEnderecoChange = event => this.setState({ newconsultoria: { ...this.state.newconsultoria, "endereco": event.target.value } });
+  onAddConsultoriaFantasiaChange = event => this.setState({ newconsultoria: { ...this.state.newconsultoria, "fantasia": event.target.value } });
+  onAddConsultoriaInicioDeContratoChange = event => this.setState({ newconsultoria: { ...this.state.newconsultoria, "iniciodecontrato": event.target.value } });
+  onAddConsultoriaModalidadeChange = event => this.setState({ newconsultoria: { ...this.state.newconsultoria, "modalidade": event.target.value } });
+  onAddConsultoriaObjectsChange = event => this.setState({ newconsultoria: { ...this.state.newconsultoria, "objects": event.target.value } });
+  onAddConsultoriaNormasChange = event => this.setState({ newconsultoria: { ...this.state.newconsultoria, "normas": event.target.value } });
+  onAddConsultoriaVigenciaDeContratoChange = event => this.setState({ newconsultoria: { ...this.state.newconsultoria, "vigenciadecontrato": event.target.value } });
 
   componentDidMount = () => {
-    this.fetchnormas();
+    this.fetchConsultorias();
   }
 
   renderTable() {
@@ -156,22 +136,15 @@ handleAddNorma = async (id, event) => {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Ações</th>
             <th>Área</th>
-            <th>Código</th>
-            <th>Consequências</th>
-            <th>Descarte</th>
-            <th>Descrição</th>
-            <th>Riscos</th>
-            <th>Sigla</th>
-            <th>Situação</th>
-            <th>Uso Correto</th>
-            <th>Vigência</th>
+            <th>CNPJ</th>
+            <th>Empresa</th>
+            <th>Endereco</th>
+            <th>Fantasia</th>
+            <th>normas</th>
+            <th>Modalidade</th>
+            <th>vigenciadecontrato</th>
             <th>Ação</th>
-            {/* <th>Título</th> 
-            <th>Objeto de Normas</th>
-            <th>Objeto</th>
-            <th>Fonte</th>*/}
           </tr>
         </thead>
         <tbody>{ this.renderRows() }</tbody>
@@ -180,31 +153,24 @@ handleAddNorma = async (id, event) => {
   }
 
   renderRows() {
-    return this.state.normas.map( norma => {
+    return this.state.consultorias.map( consultoria => {
         return (
-          <tr key={norma.id}>
-            <td>{norma.id}</td>
-            <td>{norma.acoes}</td>
-            <td>{norma.area}</td>
-            <td>{norma.codigo}</td>
-            <td>{norma.consequencias}</td>
-            <td>{norma.descarte}</td>
-            <td>{norma.descricao}</td>
-            <td>{norma.riscos}</td>
-            <td>{norma.sigla}</td>
-            <td>{norma.situation}</td>
-            <td>{norma.usocorreto}</td>
-            <td>{norma.vigencia}</td>
-            {/* <td>{norma.titulo}</td>
-            <td>{norma.normasobjects}</td>
-            <td>{norma.objects}</td>
-            <td>{norma.fonte}</td>*/}
+          <tr key={consultoria.id}>
+            <td>{consultoria.id}</td>
+            <td>{consultoria.area}</td>
+            <td>{consultoria.cnpj}</td>
+            <td>{consultoria.empresa}</td>
+            <td>{consultoria.endereco}</td>
+            <td>{consultoria.fantasia}</td>
+            <td>{consultoria.normas}</td>
+            <td>{consultoria.modalidade}</td>
+            <td>{consultoria.vigenciadecontrato}</td>
             <td>
               <button className="button is-small is-warning"
-                onClick={event => this.handleUpdateNorma(norma.id)}>Editar
+                onClick={event => this.handleUpdateConsultoria(consultoria.id)}>Editar
               </button>
               <button className="button is-small is-danger"
-                onClick={event => this.handleDeleteNorma(norma.id, event)}>Excluir
+                onClick={event => this.handleDeleteConsultoria(consultoria.id, event)}>Excluir
               </button>            
             </td>
           </tr>
@@ -216,7 +182,7 @@ handleAddNorma = async (id, event) => {
   renderForm() {
     return (
       <div className="field is-horizontal">
-        <form onSubmit={event => this.handleAddNorma(this.state.newnorma.id, event)}></form>
+        <form onSubmit={event => this.handleAddConsultoria(this.state.newconsultoria.id, event)}></form>
           <div className="column">
             <div className="field has-addons">
               {/* <label className="label">ID</label> */}
@@ -225,18 +191,18 @@ handleAddNorma = async (id, event) => {
                 type="text"
                 name="id"
                 placeholder="ID"
-                value={this.state.newnorma.id}
-                onChange={this.onAddNormaIdChange}
+                value={this.state.newconsultoria.id}
+                onChange={this.onAddConsultoriaIdChange}
                 disabled
               />  
               {/* <label className="label">Ações</label> */}
               <input
                 className="input is-normal"
                 type="text"
-                name="acoes"
-                placeholder="Digite Ações"
-                value={this.state.newnorma.acoes}
-                onChange={this.onAddNormaAcoesChange}
+                name="cnpj"
+                placeholder="Digite CNPJ"
+                value={this.state.newconsultoria.cnpj}
+                onChange={this.onAddconsultoriasCNPJChange}
               />   
               {/* <label className="label">Área</label> */}
               <input
@@ -244,141 +210,96 @@ handleAddNorma = async (id, event) => {
                 type="text"
                 name="area"
                 placeholder="Digite Área"
-                value={this.state.newnorma.area}
-                onChange={this.onAddNormaAreaChange}
-              />       
-              {/* <label className="label">Código</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="codigo"
-                placeholder="Digite Código"
-                value={this.state.newnorma.codigo}
-                onChange={this.onAddNormasCodigoChange}
-              />                                  
+                value={this.state.newconsultoria.area}
+                onChange={this.onAddConsultoriaAreaChange}
+              />                                        
             </div>          
-            <div className="field has-addons">
-              {/* <label className="label">Consequências</label> */}
+            <div className="field has-addons">  
+              {/* <label className="label">endereco</label> */}
               <input
                 className="input is-normal"
                 type="text"
-                name="consequencias"
-                placeholder="Digite Consequências"
-                value={this.state.newnorma.consequencias}
-                onChange={this.onAddNormaConsequenciasChange}
-              />  
-              {/* <label className="label">Descarte</label> */}
+                name="endereco"
+                placeholder="Digite Endereco"
+                value={this.state.newconsultoria.endereco}
+                onChange={this.onAddConsultoriaEnderecoChange}
+              />        
+              {/* <label className="label">iniciodecontrato</label> */}
               <input
                 className="input is-normal"
                 type="text"
-                name="descarte"
-                placeholder="Digite Descarte"
-                value={this.state.newnorma.descarte}
-                onChange={this.onAddNormaDescarteChange}
-              />   
-              {/* <label className="label">Descrição</label> */}
+                name="iniciodecontrato"
+                placeholder="Digite Inicio de Contrato"
+                value={this.state.newconsultoria.iniciodecontrato}
+                onChange={this.onAddConsultoriaInicioDeContratoChange}
+              />             
+              {/* <label className="label">empresa</label> */}
               <input
                 className="input is-normal"
                 type="text"
-                name="descricao"
-                placeholder="Digite Descrição"
-                value={this.state.newnorma.descricao}
-                onChange={this.onAddNormaDescricaoChange}
-              />       
-              {/* <label className="label">Fonte</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="fonte"
-                placeholder="Digite Fonte"
-                value={this.state.newnorma.fonte}
-                onChange={this.onAddNormaFonteChange}
-              />                                  
+                name="empresa"
+                placeholder="Digite Empresa"
+                value={this.state.newconsultoria.empresa}
+                onChange={this.onAddConsultoriaEmpresaChange}
+              />                                    
             </div>  
             <div className="field has-addons">
-              {/* <label className="label">Objetos Normas</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="normasobjects"
-                placeholder="Digite Objetos Normas"
-                value={this.state.newnorma.normasobjects}
-                onChange={this.onAddNormaObjectsNormasChange}
-              />  
               {/* <label className="label">Objetos</label> */}
               <input
                 className="input is-normal"
                 type="text"
                 name="objects"
                 placeholder="Digite Objetos"
-                value={this.state.newnorma.objects}
-                onChange={this.onAddNormaObjectsChange}
+                value={this.state.newconsultoria.objects}
+                onChange={this.onAddConsultoriaObjectsChange}
               />   
-              {/* <label className="label">Riscos</label> */}
+              {/* <label className="label">normas</label> */}
               <input
                 className="input is-normal"
                 type="text"
-                name="riscos"
-                placeholder="Digite Riscos"
-                value={this.state.newnorma.riscos}
-                onChange={this.onAddNormaRiscosChange}
+                name="normas"
+                placeholder="Digite Normas"
+                value={this.state.newconsultoria.normas}
+                onChange={this.onAddConsultoriaNormasChange}
               />       
-              {/* <label className="label">Sigla</label> */}
+              {/* <label className="label">vigenciadecontrato</label> */}
               <input
                 className="input is-normal"
                 type="text"
-                name="sigla"
-                placeholder="Digite Sigla"
-                value={this.state.newnorma.sigla}
-                onChange={this.onAddNormaSiglaChange}
+                name="vigenciadecontrato"
+                placeholder="Digite Vigencia de Contrato"
+                value={this.state.newconsultoria.vigenciadecontrato}
+                onChange={this.onAddConsultoriaVigenciaDeContratoChange}
               />                                  
             </div>      
             <div className="field has-addons">
-              {/* <label className="label">Situação</label> */}
+              {/* <label className="label">Fantasia</label> */}
               <input
                 className="input is-normal"
                 type="text"
-                name="situation"
-                placeholder="Digite Situação"
-                value={this.state.newnorma.situation}
-                onChange={this.onAddNormaSituationChange}
-              />  
-              {/* <label className="label">Título</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="titulo"
-                placeholder="Digite Título"
-                value={this.state.newnorma.titulo}
-                onChange={this.onAddNormaTituloChange}
+                name="fantais"
+                placeholder="Digite Fantasia"
+                value={this.state.newconsultoria.fantasia}
+                onChange={this.onAddConsultoriaFantasiaChange}
               />   
-              {/* <label className="label">Uso Correto</label> */}
+              {/* <label className="label">modalidade</label> */}
               <input
                 className="input is-normal"
                 type="text"
-                name="usocorreto"
-                placeholder="Digite Uso Correto"
-                value={this.state.newnorma.usocorreto}
-                onChange={this.onAddNormaUsoCorretoChange}
+                name="modalidade"
+                placeholder="Digite Modalidade"
+                value={this.state.newconsultoria.modalidade}
+                onChange={this.onAddConsultoriaModalidadeChange}
               />       
-              {/* <label className="label">Vigência</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="vigencia"
-                placeholder="Digite Vigência"
-                value={this.state.newnorma.vigencia}
-                onChange={this.onAddNormaVigenciaChange}
-              />                                  
-            </div>                                             
+            </div>                             
             <div className="field is-grouped is-grouped-right">
             <p className="control">
-              <button className="button is-primary" onClick={event => this.handleAddNorma(this.state.newnorma.id, event)}>
+              <button className="button is-primary" onClick={event => this.handleAddConsultoria(this.state.newconsultoria.id, event)}>
                 Submit
               </button>
             </p>
             <p className="control">
-              <button className="button is-light" onClick={event => this.handleClearNorma()}>
+              <button className="button is-light" onClick={event => this.handleClearConsultoria()}>
                 Cancel
               </button>
             </p>

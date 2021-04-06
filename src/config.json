@@ -1,5 +1,5 @@
 {
-  "api": { 
+  "apiNormas": { 
     "invokeUrl": "https://nerngh99k4.execute-api.us-west-2.amazonaws.com/normas",
     "Cors": {
       "AllowMethods": "'*'",
@@ -7,6 +7,14 @@
       "AllowOrigin": "'*'"
     }
   },
+  "apiConsultorias": { 
+    "invokeUrl": " https://ixsz1uj4ac.execute-api.us-west-2.amazonaws.com/consultorias",
+    "Cors": {
+      "AllowMethods": "'*'",
+      "AllowHeaders": "'*'",
+      "AllowOrigin": "'*'"
+    }
+  },  
   "cognito": {
     "REGION": "us-west-2",
     "USER_POOL_ID": "us-west-2_bkNu1WPbD",
