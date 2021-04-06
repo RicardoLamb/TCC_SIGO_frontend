@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Normas from './components/Normas';
 import Consultorias from './components/Consultorias';
+import Abnt from './components/Abnt';
 import LogIn from './components/auth/LogIn';
 import Register from './components/auth/Register';
 import ForgotPassword from './components/auth/ForgotPassword';
@@ -65,6 +66,7 @@ async componentDidMount() {
               <Route exact path="/" render={(props) => <Home {...props} auth={authProps} /> } />
               <Route exact path="/normas" render={(props) => <Normas {...props} auth={authProps} /> } />
               <Route exact path="/consultorias" render={(props) => <Consultorias {...props} auth={authProps} /> } />
+              <Route exact path="/abnt" render={(props) => <Abnt {...props} auth={authProps} /> } />
               <Route exact path="/login" render={(props) => <LogIn {...props} auth={authProps} /> } />
               <Route exact path="/register" render={(props) => <Register {...props} auth={authProps} /> } />
               <Route exact path="/forgotpassword" render={(props) => <ForgotPassword {...props} auth={authProps} /> } />

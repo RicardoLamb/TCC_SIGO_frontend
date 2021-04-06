@@ -20,30 +20,8 @@ export default class Consultorias extends Component {
       "objects": "",
       "normas": "",
       "vigenciadecontrato": ""
-    },
+    },      
     consultorias: []
-  }
-
-  addContact = async (e) => {
-    e.preventDefault();
-    try {
-      const data = {
-        id: formState.id,
-        area: formState.area,
-        cnpj: formState.cnpj,
-        empresa: formState.empresa,
-        endereco: formState.endereco,
-        fantasia: formState.fantasia,
-        iniciodecontrato: formState.iniciodecontrato,
-        modalidade: formState.modalidade,
-        objects: formState.objects,
-        normas: formState.normas,
-        vigenciadecontrato: formState.vigenciadecontrato
-      }
-      await axios.post(`${config.apiConsultorias.invokeUrl}/consultorias/${formState.id}`, data);
-    }catch (err) {
-      console.log(`Error updating consultoria: ${err}`);
-    }
   }
 
 updateFormState(key, value) {
@@ -112,6 +90,10 @@ handleAddConsultoria = async (id, event) => {
     } catch (err) {
       console.log(`An error has occurred: ${err}`);
     }
+  }
+
+  componentDidMount = () => {
+    this.fetchConsultorias();
   }
 
   onAddConsultoriaIdChange = event => this.setState({ newconsultoria: { ...this.state.newconsultoria, "id": event.target.value } });

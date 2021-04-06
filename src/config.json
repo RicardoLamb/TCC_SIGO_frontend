@@ -15,6 +15,14 @@
       "AllowOrigin": "'*'"
     }
   },  
+  "apiAbnt": { 
+    "invokeUrl": " https://boo42sr8f6.execute-api.us-west-2.amazonaws.com/abnt",
+    "Cors": {
+      "AllowMethods": "'*'",
+      "AllowHeaders": "'*'",
+      "AllowOrigin": "'*'"
+    }
+  },    
   "cognito": {
     "REGION": "us-west-2",
     "USER_POOL_ID": "us-west-2_bkNu1WPbD",

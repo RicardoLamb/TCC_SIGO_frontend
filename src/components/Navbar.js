@@ -37,6 +37,9 @@ export default class Navbar extends Component {
                 <a href="/consultorias" className="navbar-item">
                   Consultorias
                 </a>
+                <a href="/abnt" className="navbar-item">
+                  ABNT
+                </a>                
               </div>
             )}            
           </div>
