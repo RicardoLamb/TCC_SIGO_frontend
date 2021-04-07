@@ -26,34 +26,12 @@ export default class Normas extends Component {
       "usocorreto": "",
       "vigencia": ""
     },
-    normas: []
+    normas: [],
+    search: ""
   }
 
-  addContact = async (e) => {
-    e.preventDefault();
-    try {
-      const data = {
-        id: formState.id,
-        acoes: formState.acoes,
-        area: formState.area,
-        codigo: formState.codigo,
-        consequencias: formState.consequencias,
-        descarte: formState.descarte,
-        descricao: formState.descricao,
-        fonte: formState.fonte,
-        normasobjects: formState.normasobjects,
-        objects: formState.objects,
-        riscos: formState.riscos,
-        sigla: formState.sigla,
-        situation: formState.situation,
-        titulo: formState.titulo,
-        usocorreto: formState.usocorreto,
-        vigencia: formState.vigencia
-      }
-      await axios.post(`${config.apiNormas.invokeUrl}/normas/${formState.id}`, data);
-    }catch (err) {
-      console.log(`Error updating norma: ${err}`);
-    }
+  onSearch(event) {
+    this.setState({ search: event.target.value.substr(0, 20)})
   }
 
 updateFormState(key, value) {
@@ -180,38 +158,43 @@ handleAddNorma = async (id, event) => {
   }
 
   renderRows() {
-    return this.state.normas.map( norma => {
-        return (
-          <tr key={norma.id}>
-            <td>{norma.id}</td>
-            <td>{norma.acoes}</td>
-            <td>{norma.area}</td>
-            <td>{norma.codigo}</td>
-            <td>{norma.consequencias}</td>
-            <td>{norma.descarte}</td>
-            <td>{norma.descricao}</td>
-            <td>{norma.riscos}</td>
-            <td>{norma.sigla}</td>
-            <td>{norma.situation}</td>
-            <td>{norma.usocorreto}</td>
-            <td>{norma.vigencia}</td>
-            {/* <td>{norma.titulo}</td>
-            <td>{norma.normasobjects}</td>
-            <td>{norma.objects}</td>
-            <td>{norma.fonte}</td>*/}
-            <td>
-              <button className="button is-small is-warning"
-                onClick={event => this.handleUpdateNorma(norma.id)}>Editar
-              </button>
-              <button className="button is-small is-danger"
-                onClick={event => this.handleDeleteNorma(norma.id, event)}>Excluir
-              </button>            
-            </td>
-          </tr>
-        )
+    let filteredNormas = this.state.normas.filter(
+      (norma) => {
+        return norma.id.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
       }
     );
-  }
+    return filteredNormas.map( norma => {    
+      return (
+        <tr key={norma.id}>
+          <td>{norma.id}</td>
+          <td>{norma.acoes}</td>
+          <td>{norma.area}</td>
+          <td>{norma.codigo}</td>
+          <td>{norma.consequencias}</td>
+          <td>{norma.descarte}</td>
+          <td>{norma.descricao}</td>
+          <td>{norma.riscos}</td>
+          <td>{norma.sigla}</td>
+          <td>{norma.situation}</td>
+          <td>{norma.usocorreto}</td>
+          <td>{norma.vigencia}</td>
+          {/* <td>{norma.titulo}</td>
+          <td>{norma.normasobjects}</td>
+          <td>{norma.objects}</td>
+          <td>{norma.fonte}</td>*/}
+          <td>
+            <button className="button is-small is-warning"
+              onClick={event => this.handleUpdateNorma(norma.id)}>Editar
+            </button>
+            <button className="button is-small is-danger"
+              onClick={event => this.handleDeleteNorma(norma.id, event)}>Excluir
+            </button>            
+          </td>
+        </tr>
+      )
+    }
+  );
+}
 
   renderForm() {
     return (
@@ -394,6 +377,12 @@ handleAddNorma = async (id, event) => {
         <h1>Normas</h1>
         <p className="subtitle is-5">Adicionar, Editar ou Apagar consultoria usando o form abaixo:</p>
         {this.renderForm()}
+        <p class="control has-icons-left">
+          <input class="input is-primary" type="text" placeholder="Search" value={this.state.search} onChange={this.onSearch.bind(this)}/>
+          <span class="icon is-left">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </span>
+        </p>        
         {this.renderTable()}
       </Fragment>
     )

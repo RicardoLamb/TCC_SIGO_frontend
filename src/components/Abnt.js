@@ -17,7 +17,12 @@ export default class Abnt extends Component {
       "origem": "", 
       "categoria": ""
     },
-    abnts: []
+    abnts: [],
+    search: ""
+  }
+
+  onSearch(event) {
+    this.setState({ search: event.target.value.substr(0, 20)})
   }
 
 updateFormState(key, value) {
@@ -59,7 +64,12 @@ updateFormState(key, value) {
   }
 
   renderRows() {
-    return this.state.abnts.map( abnt => {
+    let filteredAbnts = this.state.abnts.filter(
+      (abnt) => {
+        return abnt.id.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+      }
+    );     
+    return filteredAbnts.map( abnt => {
         return (
           <tr key={abnt.id}>
             <td>{abnt.id}</td>
@@ -85,6 +95,12 @@ updateFormState(key, value) {
       <Fragment>
         <h1>ABNT</h1>
         <p className="subtitle is-5">Consultar normas ABNT usando o form abaixo:</p>
+        <p class="control has-icons-left">
+          <input class="input is-primary" type="text" placeholder="Search" value={this.state.search} onChange={this.onSearch.bind(this)}/>
+          <span class="icon is-left">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </span>
+        </p>           
         {this.renderTable()}
       </Fragment>
     )

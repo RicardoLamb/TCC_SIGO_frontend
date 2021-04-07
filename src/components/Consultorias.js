@@ -21,7 +21,12 @@ export default class Consultorias extends Component {
       "normas": "",
       "vigenciadecontrato": ""
     },      
-    consultorias: []
+    consultorias: [],
+    search: ""
+  }
+
+  onSearch(event) {
+    this.setState({ search: event.target.value.substr(0, 20)})
   }
 
 updateFormState(key, value) {
@@ -108,10 +113,6 @@ handleAddConsultoria = async (id, event) => {
   onAddConsultoriaNormasChange = event => this.setState({ newconsultoria: { ...this.state.newconsultoria, "normas": event.target.value } });
   onAddConsultoriaVigenciaDeContratoChange = event => this.setState({ newconsultoria: { ...this.state.newconsultoria, "vigenciadecontrato": event.target.value } });
 
-  componentDidMount = () => {
-    this.fetchConsultorias();
-  }
-
   renderTable() {
     return (
       <table className="table mt-4">
@@ -135,7 +136,12 @@ handleAddConsultoria = async (id, event) => {
   }
 
   renderRows() {
-    return this.state.consultorias.map( consultoria => {
+    let filteredConsultorias = this.state.consultorias.filter(
+      (consultoria) => {
+        return consultoria.id.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+      }
+    );    
+    return filteredConsultorias.map( consultoria => {
         return (
           <tr key={consultoria.id}>
             <td>{consultoria.id}</td>
@@ -297,6 +303,12 @@ handleAddConsultoria = async (id, event) => {
         <h1>Consultorias</h1>
         <p className="subtitle is-5">Adicionar, Editar ou Apagar consultoria usando o form abaixo:</p>
         {this.renderForm()}
+        <p class="control has-icons-left">
+          <input class="input is-primary" type="text" placeholder="Search" value={this.state.search} onChange={this.onSearch.bind(this)}/>
+          <span class="icon is-left">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </span>
+        </p>         
         {this.renderTable()}
       </Fragment>
     )
