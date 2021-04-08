@@ -190,7 +190,7 @@ handleAddNorma = async (id, event) => {
     return (
       <div className="field is-horizontal">
         <form onSubmit={event => this.handleAddNorma(this.state.newnorma.id, event)}></form>
-          <div className="column">
+          <div className="column is-desktop is-mobile">
             <div className="field has-addons">
               {/* <label className="label">ID</label> */}
               <input
@@ -371,8 +371,10 @@ handleAddNorma = async (id, event) => {
           <span className="icon is-left">
             <i className="fas fa-search" aria-hidden="true"></i>
           </span>
-        </p>        
-        {this.renderTable()}
+        </p>       
+        <div class="table-container">
+          {this.renderTable()}
+        </div> 
       </Fragment>
     )
   }

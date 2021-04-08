@@ -169,7 +169,7 @@ handleAddConsultoria = async (id, event) => {
     return (
       <div className="field is-horizontal">
         <form onSubmit={event => this.handleAddConsultoria(this.state.newconsultoria.id, event)}></form>
-          <div className="column">
+          <div className="column is-desktop is-mobile">
             <div className="field has-addons">
               {/* <label className="label">ID</label> */}
               <input
