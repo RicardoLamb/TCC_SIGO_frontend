@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import axios from "axios";
-import nextId from "react-id-generator";
 
 const config = require('../config.json');
 const formState = { "id": "", "acoes": "", "area": "", "codigo": "", "consequencias": "", "descarte": "", "descricao": "", "fonte": "", "normasobjects": "", "objects": "", "riscos": "", "sigla": "", "situation": "", "titulo": "", "usocorreto": "", "vigencia": "", "method": "post" };
@@ -41,7 +40,6 @@ updateFormState(key, value) {
 handleAddNorma = async (id, event) => {
   event.preventDefault();
   try {
-    id = (id === "" ? nextId("NID-") : id);
     const params = {
       "id": id,
       "acoes": this.state.newnorma.acoes,
@@ -146,10 +144,6 @@ handleAddNorma = async (id, event) => {
             <th>Uso Correto</th>
             <th>Vigência</th>
             <th>Ação</th>
-            {/* <th>Título</th> 
-            <th>Objeto de Normas</th>
-            <th>Objeto</th>
-            <th>Fonte</th>*/}
           </tr>
         </thead>
         <tbody>{ this.renderRows() }</tbody>
@@ -178,10 +172,6 @@ handleAddNorma = async (id, event) => {
           <td>{norma.situation}</td>
           <td>{norma.usocorreto}</td>
           <td>{norma.vigencia}</td>
-          {/* <td>{norma.titulo}</td>
-          <td>{norma.normasobjects}</td>
-          <td>{norma.objects}</td>
-          <td>{norma.fonte}</td>*/}
           <td>
             <button className="button is-small is-warning"
               onClick={event => this.handleUpdateNorma(norma.id)}>Editar
@@ -210,7 +200,6 @@ handleAddNorma = async (id, event) => {
                 placeholder="ID"
                 value={this.state.newnorma.id}
                 onChange={this.onAddNormaIdChange}
-                disabled
               />  
               {/* <label className="label">Ações</label> */}
               <input
@@ -377,10 +366,10 @@ handleAddNorma = async (id, event) => {
         <h1>Normas</h1>
         <p className="subtitle is-5">Adicionar, Editar ou Apagar consultoria usando o form abaixo:</p>
         {this.renderForm()}
-        <p class="control has-icons-left">
-          <input class="input is-primary" type="text" placeholder="Search" value={this.state.search} onChange={this.onSearch.bind(this)}/>
-          <span class="icon is-left">
-            <i class="fas fa-search" aria-hidden="true"></i>
+        <p className="control has-icons-left">
+          <input className="input is-primary" type="text" placeholder="Search" value={this.state.search} onChange={this.onSearch.bind(this)}/>
+          <span className="icon is-left">
+            <i className="fas fa-search" aria-hidden="true"></i>
           </span>
         </p>        
         {this.renderTable()}

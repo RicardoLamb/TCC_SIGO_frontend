@@ -95,10 +95,10 @@ updateFormState(key, value) {
       <Fragment>
         <h1>ABNT</h1>
         <p className="subtitle is-5">Consultar normas ABNT usando o form abaixo:</p>
-        <p class="control has-icons-left">
-          <input class="input is-primary" type="text" placeholder="Search" value={this.state.search} onChange={this.onSearch.bind(this)}/>
-          <span class="icon is-left">
-            <i class="fas fa-search" aria-hidden="true"></i>
+        <p className="control has-icons-left">
+          <input className="input is-primary" type="text" placeholder="Search" value={this.state.search} onChange={this.onSearch.bind(this)}/>
+          <span className="icon is-left">
+            <i className="fas fa-search" aria-hidden="true"></i>
           </span>
         </p>           
         {this.renderTable()}

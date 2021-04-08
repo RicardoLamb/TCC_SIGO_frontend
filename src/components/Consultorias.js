@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import axios from "axios";
-import nextId from "react-id-generator";
 
 const config = require('../config.json');
 const formState = { "id": "", "area": "", "cnpj": "", "empresa": "", "endereco": "", "fantasia": "", "iniciodecontrato": "", "modalidade": "", "objects": "", "normas": "", "vigenciadecontrato": ""};
@@ -36,7 +35,6 @@ updateFormState(key, value) {
 handleAddConsultoria = async (id, event) => {
   event.preventDefault();
   try {
-    id = (id === "" ? nextId("NID-") : id);
     const params = {
       "id": id,
       "area": this.state.newconsultoria.area,
@@ -181,7 +179,6 @@ handleAddConsultoria = async (id, event) => {
                 placeholder="ID"
                 value={this.state.newconsultoria.id}
                 onChange={this.onAddConsultoriaIdChange}
-                disabled
               />  
               {/* <label className="label">Ações</label> */}
               <input
@@ -303,10 +300,10 @@ handleAddConsultoria = async (id, event) => {
         <h1>Consultorias</h1>
         <p className="subtitle is-5">Adicionar, Editar ou Apagar consultoria usando o form abaixo:</p>
         {this.renderForm()}
-        <p class="control has-icons-left">
-          <input class="input is-primary" type="text" placeholder="Search" value={this.state.search} onChange={this.onSearch.bind(this)}/>
-          <span class="icon is-left">
-            <i class="fas fa-search" aria-hidden="true"></i>
+        <p className="control has-icons-left">
+          <input className="input is-primary" type="text" placeholder="Search" value={this.state.search} onChange={this.onSearch.bind(this)}/>
+          <span className="icon is-left">
+            <i className="fas fa-search" aria-hidden="true"></i>
           </span>
         </p>         
         {this.renderTable()}
