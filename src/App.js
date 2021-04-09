@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Normas from './components/Normas';
 import Consultorias from './components/Consultorias';
+import Abnt from './components/Abnt';
+import Dashboard from './components/Dashboard';
 import LogIn from './components/auth/LogIn';
 import Register from './components/auth/Register';
 import ForgotPassword from './components/auth/ForgotPassword';
@@ -20,10 +22,13 @@ library.add(faEdit);
 
 class App extends Component {
 
+  _isMounted = false;
+
   state = {
     isAuthenticated: false,
     isAuthenticating: true,
-    user: null
+    user: null,
+    token: null
   }
 
   setAuthStatus = authenticated => {
@@ -36,15 +41,23 @@ class App extends Component {
 
 async componentDidMount() {
   try{
+    this._isMounted = true;
     const session = await Auth.currentSession();
     this.setAuthStatus(true);
     console.log(session);
     const user = await Auth.currentAuthenticatedUser();
     this.setUser(user);
+    const token = user.signInUserSession.idToken.jwtToken;
+    console.log("token:" + token);  
+    this.setToken(token);
   }catch(error) {
     console.log(error);
   }
   this.setState( { isAuthenticating: false });
+}
+
+componentWillUnmount() {
+  this._isMounted = false;
 }
 
   render() {
@@ -55,6 +68,17 @@ async componentDidMount() {
       setUser: this.setUser
     }
 
+    const ProtectedRoute = ({ component: Component, ...rest }) => (
+      <Route {...rest} render={(props) => (
+        this.state.isAuthenticated === true
+          ? <Component {...props} />
+          : <Redirect to={{
+              pathname: '/login',
+              state: { from: props.location }
+            }} />
+      )} />
+    );    
+
     return (
       !this.state.isAuthenticating &&
       <div className="App">
@@ -63,15 +87,17 @@ async componentDidMount() {
             <Navbar auth={authProps} />
             <Switch>
               <Route exact path="/" render={(props) => <Home {...props} auth={authProps} /> } />
-              <Route exact path="/normas" render={(props) => <Normas {...props} auth={authProps} /> } />
-              <Route exact path="/consultorias" render={(props) => <Consultorias {...props} auth={authProps} /> } />
+              <ProtectedRoute path="/normas" component={Normas} />
+              <ProtectedRoute path="/consultorias" component={Consultorias} />
+              <ProtectedRoute path="/abnt" component={Abnt} />
+              <ProtectedRoute path="/dashboard" component={Dashboard} />
               <Route exact path="/login" render={(props) => <LogIn {...props} auth={authProps} /> } />
               <Route exact path="/register" render={(props) => <Register {...props} auth={authProps} /> } />
               <Route exact path="/forgotpassword" render={(props) => <ForgotPassword {...props} auth={authProps} /> } />
               <Route exact path="/forgotpasswordverification" render={(props) => <ForgotPasswordVerification {...props} auth={authProps} /> } />
-              <Route exact path="/changepassword" render={(props) => <ChangePassword {...props} auth={authProps} /> } />
-              <Route exact path="/changepasswordconfirmation" render={(props) => <ChangePasswordConfirm {...props} auth={authProps} /> } />
-              <Route exact path="/welcome" render={(props) => <Welcome {...props} auth={authProps} /> } />
+              <ProtectedRoute path="/changepassword" component={ChangePassword} />
+              <ProtectedRoute path="/changepasswordconfirmation" component={ChangePasswordConfirm} />
+              <ProtectedRoute path="/welcome" component={Welcome} />
             </Switch>
             <Footer />
           </div>

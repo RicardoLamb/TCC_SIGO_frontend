@@ -6,6 +6,7 @@ import App from './App';
 import Amplify from 'aws-amplify';
 import config from './config';
 import * as serviceWorker from './serviceWorker';
+import '../node_modules/font-awesome/css/font-awesome.min.css'; 
 
 Amplify.configure({
     Auth: {
