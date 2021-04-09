@@ -40,6 +40,9 @@ export default class Navbar extends Component {
                 <a href="/abnt" className="navbar-item">
                   ABNT
                 </a>                
+                <a href="/dashboard" className="navbar-item">
+                  Gestão de Contratos
+                </a>                  
               </div>
             )}            
           </div>

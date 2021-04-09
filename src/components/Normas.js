@@ -188,175 +188,181 @@ handleAddNorma = async (id, event) => {
 
   renderForm() {
     return (
-      <div className="field is-horizontal">
-        <form onSubmit={event => this.handleAddNorma(this.state.newnorma.id, event)}></form>
-          <div className="column is-desktop is-mobile">
-            <div className="field has-addons">
-              {/* <label className="label">ID</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="id"
-                placeholder="ID"
-                value={this.state.newnorma.id}
-                onChange={this.onAddNormaIdChange}
-              />  
-              {/* <label className="label">Ações</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="acoes"
-                placeholder="Digite Ações"
-                value={this.state.newnorma.acoes}
-                onChange={this.onAddNormaAcoesChange}
-              />   
-              {/* <label className="label">Área</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="area"
-                placeholder="Digite Área"
-                value={this.state.newnorma.area}
-                onChange={this.onAddNormaAreaChange}
-              />       
-              {/* <label className="label">Código</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="codigo"
-                placeholder="Digite Código"
-                value={this.state.newnorma.codigo}
-                onChange={this.onAddNormasCodigoChange}
-              />                                  
-            </div>          
-            <div className="field has-addons">
-              {/* <label className="label">Consequências</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="consequencias"
-                placeholder="Digite Consequências"
-                value={this.state.newnorma.consequencias}
-                onChange={this.onAddNormaConsequenciasChange}
-              />  
-              {/* <label className="label">Descarte</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="descarte"
-                placeholder="Digite Descarte"
-                value={this.state.newnorma.descarte}
-                onChange={this.onAddNormaDescarteChange}
-              />   
-              {/* <label className="label">Descrição</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="descricao"
-                placeholder="Digite Descrição"
-                value={this.state.newnorma.descricao}
-                onChange={this.onAddNormaDescricaoChange}
-              />       
-              {/* <label className="label">Fonte</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="fonte"
-                placeholder="Digite Fonte"
-                value={this.state.newnorma.fonte}
-                onChange={this.onAddNormaFonteChange}
-              />                                  
-            </div>  
-            <div className="field has-addons">
-              {/* <label className="label">Objetos Normas</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="normasobjects"
-                placeholder="Digite Objetos Normas"
-                value={this.state.newnorma.normasobjects}
-                onChange={this.onAddNormaObjectsNormasChange}
-              />  
-              {/* <label className="label">Objetos</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="objects"
-                placeholder="Digite Objetos"
-                value={this.state.newnorma.objects}
-                onChange={this.onAddNormaObjectsChange}
-              />   
-              {/* <label className="label">Riscos</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="riscos"
-                placeholder="Digite Riscos"
-                value={this.state.newnorma.riscos}
-                onChange={this.onAddNormaRiscosChange}
-              />       
-              {/* <label className="label">Sigla</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="sigla"
-                placeholder="Digite Sigla"
-                value={this.state.newnorma.sigla}
-                onChange={this.onAddNormaSiglaChange}
-              />                                  
-            </div>      
-            <div className="field has-addons">
-              {/* <label className="label">Situação</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="situation"
-                placeholder="Digite Situação"
-                value={this.state.newnorma.situation}
-                onChange={this.onAddNormaSituationChange}
-              />  
-              {/* <label className="label">Título</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="titulo"
-                placeholder="Digite Título"
-                value={this.state.newnorma.titulo}
-                onChange={this.onAddNormaTituloChange}
-              />   
-              {/* <label className="label">Uso Correto</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="usocorreto"
-                placeholder="Digite Uso Correto"
-                value={this.state.newnorma.usocorreto}
-                onChange={this.onAddNormaUsoCorretoChange}
-              />       
-              {/* <label className="label">Vigência</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="vigencia"
-                placeholder="Digite Vigência"
-                value={this.state.newnorma.vigencia}
-                onChange={this.onAddNormaVigenciaChange}
-              />                                  
-            </div>                                             
-            <div className="field is-grouped is-grouped-right">
-            <p className="control">
-              <button className="button is-primary" onClick={event => this.handleAddNorma(this.state.newnorma.id, event)}>
-                Submit
-              </button>
-            </p>
-            <p className="control">
-              <button className="button is-light" onClick={event => this.handleClearNorma()}>
-                Cancel
-              </button>
-            </p>
-          </div>             
-        </div>         
+      <section className="hero">
+        <div className="hero-body">
+          <div className="container">
+            <div className="field is-horizontal">
+              <form onSubmit={event => this.handleAddNorma(this.state.newnorma.id, event)}></form>
+                <div className="column is-desktop is-mobile">
+                  <div className="field has-addons">
+                    {/* <label className="label">ID</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="id"
+                      placeholder="ID"
+                      value={this.state.newnorma.id}
+                      onChange={this.onAddNormaIdChange}
+                    />  
+                    {/* <label className="label">Ações</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="acoes"
+                      placeholder="Digite Ações"
+                      value={this.state.newnorma.acoes}
+                      onChange={this.onAddNormaAcoesChange}
+                    />   
+                    {/* <label className="label">Área</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="area"
+                      placeholder="Digite Área"
+                      value={this.state.newnorma.area}
+                      onChange={this.onAddNormaAreaChange}
+                    />       
+                    {/* <label className="label">Código</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="codigo"
+                      placeholder="Digite Código"
+                      value={this.state.newnorma.codigo}
+                      onChange={this.onAddNormasCodigoChange}
+                    />                                  
+                  </div>          
+                  <div className="field has-addons">
+                    {/* <label className="label">Consequências</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="consequencias"
+                      placeholder="Digite Consequências"
+                      value={this.state.newnorma.consequencias}
+                      onChange={this.onAddNormaConsequenciasChange}
+                    />  
+                    {/* <label className="label">Descarte</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="descarte"
+                      placeholder="Digite Descarte"
+                      value={this.state.newnorma.descarte}
+                      onChange={this.onAddNormaDescarteChange}
+                    />   
+                    {/* <label className="label">Descrição</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="descricao"
+                      placeholder="Digite Descrição"
+                      value={this.state.newnorma.descricao}
+                      onChange={this.onAddNormaDescricaoChange}
+                    />       
+                    {/* <label className="label">Fonte</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="fonte"
+                      placeholder="Digite Fonte"
+                      value={this.state.newnorma.fonte}
+                      onChange={this.onAddNormaFonteChange}
+                    />                                  
+                  </div>  
+                  <div className="field has-addons">
+                    {/* <label className="label">Objetos Normas</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="normasobjects"
+                      placeholder="Digite Objetos Normas"
+                      value={this.state.newnorma.normasobjects}
+                      onChange={this.onAddNormaObjectsNormasChange}
+                    />  
+                    {/* <label className="label">Objetos</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="objects"
+                      placeholder="Digite Objetos"
+                      value={this.state.newnorma.objects}
+                      onChange={this.onAddNormaObjectsChange}
+                    />   
+                    {/* <label className="label">Riscos</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="riscos"
+                      placeholder="Digite Riscos"
+                      value={this.state.newnorma.riscos}
+                      onChange={this.onAddNormaRiscosChange}
+                    />       
+                    {/* <label className="label">Sigla</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="sigla"
+                      placeholder="Digite Sigla"
+                      value={this.state.newnorma.sigla}
+                      onChange={this.onAddNormaSiglaChange}
+                    />                                  
+                  </div>      
+                  <div className="field has-addons">
+                    {/* <label className="label">Situação</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="situation"
+                      placeholder="Digite Situação"
+                      value={this.state.newnorma.situation}
+                      onChange={this.onAddNormaSituationChange}
+                    />  
+                    {/* <label className="label">Título</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="titulo"
+                      placeholder="Digite Título"
+                      value={this.state.newnorma.titulo}
+                      onChange={this.onAddNormaTituloChange}
+                    />   
+                    {/* <label className="label">Uso Correto</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="usocorreto"
+                      placeholder="Digite Uso Correto"
+                      value={this.state.newnorma.usocorreto}
+                      onChange={this.onAddNormaUsoCorretoChange}
+                    />       
+                    {/* <label className="label">Vigência</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="vigencia"
+                      placeholder="Digite Vigência"
+                      value={this.state.newnorma.vigencia}
+                      onChange={this.onAddNormaVigenciaChange}
+                    />                                  
+                  </div>                                             
+                  <div className="field is-grouped is-grouped-right">
+                  <p className="control">
+                    <button className="button is-primary" onClick={event => this.handleAddNorma(this.state.newnorma.id, event)}>
+                      Submit
+                    </button>
+                  </p>
+                  <p className="control">
+                    <button className="button is-light" onClick={event => this.handleClearNorma()}>
+                      Cancel
+                    </button>
+                  </p>
+                </div>             
+              </div>         
+            </div>
+          </div>
       </div>
+    </section>             
     );
   }
 

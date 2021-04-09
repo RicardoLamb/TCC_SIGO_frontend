@@ -113,23 +113,23 @@ handleAddConsultoria = async (id, event) => {
 
   renderTable() {
     return (
-      <table className="table mt-4">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Área</th>
-            <th>CNPJ</th>
-            <th>Empresa</th>
-            <th>Endereco</th>
-            <th>Fantasia</th>
-            <th>normas</th>
-            <th>Modalidade</th>
-            <th>vigenciadecontrato</th>
-            <th>Ação</th>
-          </tr>
-        </thead>
-        <tbody>{ this.renderRows() }</tbody>
-      </table>
+    <table className="table mt-4">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Área</th>
+          <th>CNPJ</th>
+          <th>Empresa</th>
+          <th>Endereco</th>
+          <th>Fantasia</th>
+          <th>normas</th>
+          <th>Modalidade</th>
+          <th>vigenciadecontrato</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>{ this.renderRows() }</tbody>
+    </table>
     );
   }
 
@@ -140,7 +140,7 @@ handleAddConsultoria = async (id, event) => {
       }
     );    
     return filteredConsultorias.map( consultoria => {
-        return (
+        return (            
           <tr key={consultoria.id}>
             <td>{consultoria.id}</td>
             <td>{consultoria.area}</td>
@@ -167,136 +167,142 @@ handleAddConsultoria = async (id, event) => {
 
   renderForm() {
     return (
-      <div className="field is-horizontal">
-        <form onSubmit={event => this.handleAddConsultoria(this.state.newconsultoria.id, event)}></form>
-          <div className="column is-desktop is-mobile">
-            <div className="field has-addons">
-              {/* <label className="label">ID</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="id"
-                placeholder="ID"
-                value={this.state.newconsultoria.id}
-                onChange={this.onAddConsultoriaIdChange}
-              />  
-              {/* <label className="label">Ações</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="cnpj"
-                placeholder="Digite CNPJ"
-                value={this.state.newconsultoria.cnpj}
-                onChange={this.onAddconsultoriasCNPJChange}
-              />   
-              {/* <label className="label">Área</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="area"
-                placeholder="Digite Área"
-                value={this.state.newconsultoria.area}
-                onChange={this.onAddConsultoriaAreaChange}
-              />                                        
-            </div>          
-            <div className="field has-addons">  
-              {/* <label className="label">endereco</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="endereco"
-                placeholder="Digite Endereco"
-                value={this.state.newconsultoria.endereco}
-                onChange={this.onAddConsultoriaEnderecoChange}
-              />        
-              {/* <label className="label">iniciodecontrato</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="iniciodecontrato"
-                placeholder="Digite Inicio de Contrato"
-                value={this.state.newconsultoria.iniciodecontrato}
-                onChange={this.onAddConsultoriaInicioDeContratoChange}
-              />             
-              {/* <label className="label">empresa</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="empresa"
-                placeholder="Digite Empresa"
-                value={this.state.newconsultoria.empresa}
-                onChange={this.onAddConsultoriaEmpresaChange}
-              />                                    
-            </div>  
-            <div className="field has-addons">
-              {/* <label className="label">Objetos</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="objects"
-                placeholder="Digite Objetos"
-                value={this.state.newconsultoria.objects}
-                onChange={this.onAddConsultoriaObjectsChange}
-              />   
-              {/* <label className="label">normas</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="normas"
-                placeholder="Digite Normas"
-                value={this.state.newconsultoria.normas}
-                onChange={this.onAddConsultoriaNormasChange}
-              />       
-              {/* <label className="label">vigenciadecontrato</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="vigenciadecontrato"
-                placeholder="Digite Vigencia de Contrato"
-                value={this.state.newconsultoria.vigenciadecontrato}
-                onChange={this.onAddConsultoriaVigenciaDeContratoChange}
-              />                                  
-            </div>      
-            <div className="field has-addons">
-              {/* <label className="label">Fantasia</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="fantais"
-                placeholder="Digite Fantasia"
-                value={this.state.newconsultoria.fantasia}
-                onChange={this.onAddConsultoriaFantasiaChange}
-              />   
-              {/* <label className="label">modalidade</label> */}
-              <input
-                className="input is-normal"
-                type="text"
-                name="modalidade"
-                placeholder="Digite Modalidade"
-                value={this.state.newconsultoria.modalidade}
-                onChange={this.onAddConsultoriaModalidadeChange}
-              />       
-            </div>                             
-            <div className="field is-grouped is-grouped-right">
-            <p className="control">
-              <button className="button is-primary" onClick={event => this.handleAddConsultoria(this.state.newconsultoria.id, event)}>
-                Submit
-              </button>
-            </p>
-            <p className="control">
-              <button className="button is-light" onClick={event => this.handleClearConsultoria()}>
-                Cancel
-              </button>
-            </p>
-          </div>             
-        </div>         
-      </div>
+      <section className="hero">
+        <div className="hero-body">
+          <div className="container">
+            <div className="field is-horizontal">
+              <form onSubmit={event => this.handleAddConsultoria(this.state.newconsultoria.id, event)}></form>
+                <div className="column">
+                  <div className="field has-addons">
+                    {/* <label className="label">ID</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="id"
+                      placeholder="ID"
+                      value={this.state.newconsultoria.id}
+                      onChange={this.onAddConsultoriaIdChange}
+                    />  
+                    {/* <label className="label">Ações</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="cnpj"
+                      placeholder="Digite CNPJ"
+                      value={this.state.newconsultoria.cnpj}
+                      onChange={this.onAddconsultoriasCNPJChange}
+                    />   
+                    {/* <label className="label">Área</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="area"
+                      placeholder="Digite Área"
+                      value={this.state.newconsultoria.area}
+                      onChange={this.onAddConsultoriaAreaChange}
+                    />                                        
+                  </div>          
+                  <div className="field has-addons">  
+                    {/* <label className="label">endereco</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="endereco"
+                      placeholder="Digite Endereco"
+                      value={this.state.newconsultoria.endereco}
+                      onChange={this.onAddConsultoriaEnderecoChange}
+                    />        
+                    {/* <label className="label">iniciodecontrato</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="iniciodecontrato"
+                      placeholder="Digite Inicio de Contrato"
+                      value={this.state.newconsultoria.iniciodecontrato}
+                      onChange={this.onAddConsultoriaInicioDeContratoChange}
+                    />             
+                    {/* <label className="label">empresa</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="empresa"
+                      placeholder="Digite Empresa"
+                      value={this.state.newconsultoria.empresa}
+                      onChange={this.onAddConsultoriaEmpresaChange}
+                    />                                    
+                  </div>  
+                  <div className="field has-addons">
+                    {/* <label className="label">Objetos</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="objects"
+                      placeholder="Digite Objetos"
+                      value={this.state.newconsultoria.objects}
+                      onChange={this.onAddConsultoriaObjectsChange}
+                    />   
+                    {/* <label className="label">normas</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="normas"
+                      placeholder="Digite Normas"
+                      value={this.state.newconsultoria.normas}
+                      onChange={this.onAddConsultoriaNormasChange}
+                    />       
+                    {/* <label className="label">vigenciadecontrato</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="vigenciadecontrato"
+                      placeholder="Digite Vigencia de Contrato"
+                      value={this.state.newconsultoria.vigenciadecontrato}
+                      onChange={this.onAddConsultoriaVigenciaDeContratoChange}
+                    />                                  
+                  </div>      
+                  <div className="field has-addons">
+                    {/* <label className="label">Fantasia</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="fantais"
+                      placeholder="Digite Fantasia"
+                      value={this.state.newconsultoria.fantasia}
+                      onChange={this.onAddConsultoriaFantasiaChange}
+                    />   
+                    {/* <label className="label">modalidade</label> */}
+                    <input
+                      className="input is-normal"
+                      type="text"
+                      name="modalidade"
+                      placeholder="Digite Modalidade"
+                      value={this.state.newconsultoria.modalidade}
+                      onChange={this.onAddConsultoriaModalidadeChange}
+                    />       
+                  </div>                             
+                  <div className="field is-grouped is-grouped-right">
+                  <p className="control">
+                    <button className="button is-primary" onClick={event => this.handleAddConsultoria(this.state.newconsultoria.id, event)}>
+                      Submit
+                    </button>
+                  </p>
+                  <p className="control">
+                    <button className="button is-light" onClick={event => this.handleClearConsultoria()}>
+                      Cancel
+                    </button>
+                  </p>
+                </div>             
+              </div>      
+            </div>
+          </div>
+        </div>
+      </section>      
     );
   }
 
   render() {
     return(
-      <Fragment>
+      <Fragment>  
         <h1>Consultorias</h1>
         <p className="subtitle is-5">Adicionar, Editar ou Apagar consultoria usando o form abaixo:</p>
         {this.renderForm()}

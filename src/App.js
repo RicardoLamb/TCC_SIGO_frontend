@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Normas from './components/Normas';
 import Consultorias from './components/Consultorias';
 import Abnt from './components/Abnt';
+import Dashboard from './components/Dashboard';
 import LogIn from './components/auth/LogIn';
 import Register from './components/auth/Register';
 import ForgotPassword from './components/auth/ForgotPassword';
@@ -78,6 +79,7 @@ async componentDidMount() {
               <ProtectedRoute path="/normas" component={Normas} />
               <ProtectedRoute path="/consultorias" component={Consultorias} />
               <ProtectedRoute path="/abnt" component={Abnt} />
+              <ProtectedRoute path="/dashboard" component={Dashboard} />
               <Route exact path="/login" render={(props) => <LogIn {...props} auth={authProps} /> } />
               <Route exact path="/register" render={(props) => <Register {...props} auth={authProps} /> } />
               <Route exact path="/forgotpassword" render={(props) => <ForgotPassword {...props} auth={authProps} /> } />
