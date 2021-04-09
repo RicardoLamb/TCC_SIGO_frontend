@@ -22,10 +22,13 @@ library.add(faEdit);
 
 class App extends Component {
 
+  _isMounted = false;
+
   state = {
     isAuthenticated: false,
     isAuthenticating: true,
-    user: null
+    user: null,
+    token: null
   }
 
   setAuthStatus = authenticated => {
@@ -38,15 +41,23 @@ class App extends Component {
 
 async componentDidMount() {
   try{
+    this._isMounted = true;
     const session = await Auth.currentSession();
     this.setAuthStatus(true);
     console.log(session);
     const user = await Auth.currentAuthenticatedUser();
     this.setUser(user);
+    const token = user.signInUserSession.idToken.jwtToken;
+    console.log("token:" + token);  
+    this.setToken(token);
   }catch(error) {
     console.log(error);
   }
   this.setState( { isAuthenticating: false });
+}
+
+componentWillUnmount() {
+  this._isMounted = false;
 }
 
   render() {

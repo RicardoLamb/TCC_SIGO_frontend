@@ -4,6 +4,8 @@ import Validate from "../utility/FormValidation";
 import { Auth } from "aws-amplify";
 
 class LogIn extends Component {
+  _isMounted = false;
+
   state = {
     username: "",
     password: "",
@@ -37,10 +39,11 @@ class LogIn extends Component {
     // AWS Cognito integration here
     try{
       const { user } = await Auth.signIn(this.state.username, this.state.password);
-      console.log(user);
+      console.log("User:" + user);
       this.props.auth.setAuthStatus(true);
       this.props.auth.setUser(user);
       this.props.history.push("/");
+      console.log(this.props.auth.token);
     }catch(error){
       // console.log('error signing up:', error);
       let err = null;
@@ -60,6 +63,18 @@ class LogIn extends Component {
     });
     document.getElementById(event.target.id).classList.remove("is-danger");
   };
+
+  async componentDidMount() {
+    try{
+      this._isMounted = true;
+    }catch(error) {
+      console.log(error);
+    }
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }  
 
   render() {
     return (

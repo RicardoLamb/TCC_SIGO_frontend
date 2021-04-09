@@ -378,7 +378,7 @@ handleAddNorma = async (id, event) => {
             <i className="fas fa-search" aria-hidden="true"></i>
           </span>
         </p>       
-        <div class="table-container">
+        <div className="table-container">
           {this.renderTable()}
         </div> 
       </Fragment>
